@@ -14,10 +14,7 @@ var commentSchema = new mongoose.Schema({
   writer : Number,
   username : String,
   comment: String,
-  published_date: {
-      type: String,
-      default: dateNow
-    }
+  published_date: String
 });
 
 var questionSchema = new mongoose.Schema({

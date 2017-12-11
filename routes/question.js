@@ -4,6 +4,8 @@ var Question = require("../models/question");
 var User = require("../models/user");
 var cors = require("cors");
 
+var dateNow = moment(new Date()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm');
+
 router.use(cors());
 //-------- get a user's questions -----------------
 router.post("/getUserQuestion",function(req, res) {
@@ -128,7 +130,8 @@ router.post("/addComment",function(req, res) {
                     commentId : "user_"+ req.headers['userseq'] +"-"+"QuestionCmt"+"-"+Date.now(),
                     writer: req.body.writer,
                     username : user.username,
-                    comment: req.body.comment
+                    comment: req.body.comment,
+                    published_date: dateNow
                 };
                 if(comment.writer == 1)
                     question.solved = true;
