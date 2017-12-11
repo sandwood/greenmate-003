@@ -8,10 +8,7 @@ var commentSchema = new mongoose.Schema({
   username : String,
   writer : Number,
   comment: String,
-  published_date: {
-      type: String,
-      default: moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm')
-    }
+  published_date: String
 });
 
 
@@ -32,11 +29,7 @@ var diarySchema = new mongoose.Schema({
     block : Number,
     plantInfo : {},
     // timestamps
-    published_date: {
-      type: String,
-      default: moment().tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm')
-    },
-
+    published_date: String,
     comments: [commentSchema]
 });
 

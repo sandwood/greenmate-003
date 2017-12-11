@@ -64,6 +64,7 @@ router.post("/addDiary/", function(req, res, next){
                         content : req.body.content,
                         plantInfo : plantInfo,
                         picUrl : req.body.picUrl,
+                        published_date: moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm:ss'),
                         block : 0
                     });
                                 
@@ -72,7 +73,7 @@ router.post("/addDiary/", function(req, res, next){
                             console.log(err);
                             res.status(err.code).json({isSuccess : 0});
                         }
-                        plant.updated_at = moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm');
+                        plant.updated_at = moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm:ss');
                         plant.save(function(err, plant){
                           if(err) return res.status(err.code).json({isSuccess: 0, err: err});
                           else{
@@ -165,6 +166,7 @@ router.post("/addDiary/", function(req, res, next){
             plantName : plantName,
             position : position,
             plantInfo : plantInfo,
+            published_date: moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm:ss'),
             block : 0 
         });
                 
@@ -271,7 +273,7 @@ router.post("/getDiaryList", function(req, res){
                                     numOfComment: diary.comments.length,
                                     numOfManagerReply : Number(numOfManagerAns),
                                     hasManagerAnswer : Number(hasManagerAns),
-                                    published_date : diary.published_date
+                                    published_date: moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm:ss')
                                 };
                                 userDiaries.push(diaryData);
                             });
@@ -630,7 +632,8 @@ router.post("/addComment",function(req, res, next) {
                 commentId : "user_"+ req.headers['userseq'] +"-"+"DiaryCmt"+"-"+Date.now(),
                 username : user.username,
                 writer: req.body.writer,
-                comment: req.body.comment
+                comment: req.body.comment,
+                published_date: moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm:ss')
             };
             diary.comments.push(comment);
             

@@ -36,7 +36,7 @@ router.post("/addQuestion",function(req, res){
                 picUrl : picUrl,
                 block : 0, 
                 solved: false,
-                published_date: moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm')
+                published_date: moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm:ss')
             })
         
             question.save(function(error, plant) {
@@ -134,7 +134,7 @@ router.post("/addComment",function(req, res) {
                     writer: req.body.writer,
                     username : user.username,
                     comment: req.body.comment,
-                    published_date: moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm')
+                    published_date: moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm:ss')
                 };
                 if(comment.writer == 1)
                     question.solved = true;
