@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 var autoIncrement = require("mongoose-auto-increment");
 var moment = require("moment-timezone");
+var dateNow = new Date.now();
 
 var connection = mongoose.createConnection("mongodb://krazylab:eoqkr2014@aws-us-west-2-portal.2.dblayer.com:15914/green_mate");
 
@@ -15,7 +16,7 @@ var commentSchema = new mongoose.Schema({
   comment: String,
   published_date: {
       type: String,
-      default: moment(new Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm') 
+      default: moment(dateNow).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm') 
     }
 });
 
