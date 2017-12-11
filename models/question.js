@@ -14,9 +14,13 @@ var commentSchema = new mongoose.Schema(
   commentId : String,
   writer : Number,
   username : String,
-  comment: String
-    },
-    {
+  comment: String,
+  published_date: {
+      type: String,
+      default: moment(photo.date_published).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm') 
+    }
+},
+{
     timestamps: { createdAt: "published_date" }
   }
 );
