@@ -35,7 +35,8 @@ router.post("/addQuestion",function(req, res){
                 contents : content,
                 picUrl : picUrl,
                 block : 0, 
-                solved: false
+                solved: false,
+                published_date: moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm')
             })
         
             question.save(function(error, plant) {

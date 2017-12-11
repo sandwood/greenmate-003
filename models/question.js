@@ -1,7 +1,5 @@
 var mongoose = require("mongoose");
 var autoIncrement = require("mongoose-auto-increment");
-var moment = require("moment-timezone");
-
 
 var connection = mongoose.createConnection("mongodb://krazylab:eoqkr2014@aws-us-west-2-portal.2.dblayer.com:15914/green_mate");
 
@@ -53,11 +51,7 @@ var questionSchema = new mongoose.Schema({
   solved : {
     type : Boolean
   },
-  published_date: {
-    type: String,
-    default: moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm')
-  }
-  
+  published_date: String  
 });
 
 questionSchema.plugin(autoIncrement.plugin, {model:'Question', field: 'questionSeq'});
