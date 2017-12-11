@@ -273,7 +273,7 @@ router.post("/getDiaryList", function(req, res){
                                     numOfComment: diary.comments.length,
                                     numOfManagerReply : Number(numOfManagerAns),
                                     hasManagerAnswer : Number(hasManagerAns),
-                                    published_date: moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm:ss')
+                                    published_date : diary.published_date
                                 };
                                 userDiaries.push(diaryData);
                             });
