@@ -232,7 +232,7 @@ router.post("/getDiaryList", function(req, res){
             }
             
             // ## 일지 목록 조회 ##
-            Diary.find({$and:[findQuery, {block:0}]}).sort({published_date: 1}).skip((page-1)*num).limit(num).exec(function(err, diaries) {
+            Diary.find({$and:[findQuery, {block:0}]}).sort({published_date: -1}).skip((page-1)*num).limit(num).exec(function(err, diaries) {
                 if (err) {
                     console.log("error : "+err);
                     return res.status(200).json({isSuccess : 0, isLast: 0, diaries: []});
