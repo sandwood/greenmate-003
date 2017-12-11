@@ -22,6 +22,7 @@ router.post("/addQuestion",function(req, res){
     var picUrl= req.body.picUrl;
     
     User.findOne({userSeq : userSeq}, function(err, user) {
+        console.log('addQuestion Date: ', new Date());
         if(err) return res.status(err.code).json({isSuccess:0, err: err});
             var question = new Question({
                 userSeq : userSeq,
@@ -114,6 +115,7 @@ router.post("/addComment",function(req, res) {
     console.log(questionId);
     
     Question.findOne({$and :[{questionId: questionId},{block:0}]}, function(error, question) {
+        console.log('addComment Date: ', new Date());
         
         if (error) return res.status(error.code).json({isSuccess: 0, err: error});
         else if (question == null) return res.status(204).json({isSuccess: 0, error: "No content"});
