@@ -1,10 +1,9 @@
 var mongoose = require("mongoose");
-mongoose.Promise = require('bluebird');
 
+mongoose.Promise = require("bluebird");
 
 var appInfoSchema = new mongoose.Schema({
-
-  ios:{
+  ios: {
     type: String,
     required: true
   },
@@ -12,27 +11,24 @@ var appInfoSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  android:{
-    type: String, 
-    unique: true, 
+  android: {
+    type: String,
+    unique: true,
     required: true
   },
-  androidDate :{
-    type : Date,
+  androidDate: {
+    type: Date,
     default: Date.now
   },
-  is_maintenance :{
+  is_maintenance: {
     type: Number,
     required: true
   }
 });
 
-
 appInfoSchema.pre("save", function(next) {
   return next();
 });
-
-
 
 var appInfo = mongoose.model("appInfo", appInfoSchema);
 

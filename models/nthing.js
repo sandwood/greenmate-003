@@ -14,9 +14,7 @@ var nthingSchema = new Schema({
     temperature2:Number,
     light1 : Number,
     light2 : Number
-
 });
-
 
 var Nthing = mongoose.model("Nthing", nthingSchema);
 
