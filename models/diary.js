@@ -2,18 +2,21 @@ var mongoose = require("mongoose");
 var now = new Date();
 var moment = require("moment-timezone");
 
-
-var commentSchema = new mongoose.Schema({
+var commentSchema = new mongoose.Schema(
+  {
   commentId : String,
   username : String,
   writer : Number,
   comment: String,
-  published_date: {
-      type: String,
-      default: moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm')
-    }
-});
-
+  // published_date: {
+  //     type: String,
+  //     default: moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm')
+  //   }
+  },
+  {
+    timestamps: { createdAt: "published_date" }
+  }
+);
 
 var diarySchema = new mongoose.Schema({
   
