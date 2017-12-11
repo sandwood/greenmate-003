@@ -3,6 +3,8 @@ var router = express.Router();
 var Question = require("../models/question");
 var User = require("../models/user");
 var cors = require("cors");
+var moment = require("moment-timezone");
+
 
 router.use(cors());
 //-------- get a user's questions -----------------
@@ -131,7 +133,7 @@ router.post("/addComment",function(req, res) {
                     writer: req.body.writer,
                     username : user.username,
                     comment: req.body.comment,
-                    published_date: new Date().toLocaleString("en-GB").slice(0, -6).replace(/,/g, "")
+                    published_date: moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm')
                 };
                 if(comment.writer == 1)
                     question.solved = true;
