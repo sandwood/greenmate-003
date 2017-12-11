@@ -206,7 +206,10 @@ router.post("/uploadImage", function(req, res){
     var rightNow = new Date();
     if (part.filename) {
       size = part.byteCount;
-      filename = String(rightNow.toISOString().slice(0,10).replace(/-/g,""))+'_'+ part.filename;
+      filename = new Date()
+      .toLocaleString("en-GB")
+      .slice(0, -2)
+      .replace(/[ :,/]/g, "")+'_'+part.filename+size;
       var tempPicUrl = "https://s3.ap-northeast-2.amazonaws.com/" + bucketName + "/" + filename;
       picUrl.push(tempPicUrl);
       console.log(filename);
