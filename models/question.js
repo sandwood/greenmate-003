@@ -14,10 +14,7 @@ var commentSchema = new mongoose.Schema({
   writer : Number,
   username : String,
   comment: String,
-  published_date: {
-      type: String,
-      default: moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm') 
-    }
+  published_date: String
 });
 
 var questionSchema = new mongoose.Schema({

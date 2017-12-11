@@ -115,7 +115,7 @@ router.post("/addComment",function(req, res) {
     console.log(questionId);
     
     Question.findOne({$and :[{questionId: questionId},{block:0}]}, function(error, question) {
-        console.log('addComment Date: ', new Date());
+        var date = new Date();
         
         if (error) return res.status(error.code).json({isSuccess: 0, err: error});
         else if (question == null) return res.status(204).json({isSuccess: 0, error: "No content"});
@@ -130,7 +130,8 @@ router.post("/addComment",function(req, res) {
                     commentId : "user_"+ req.headers['userseq'] +"-"+"QuestionCmt"+"-"+Date.now(),
                     writer: req.body.writer,
                     username : user.username,
-                    comment: req.body.comment
+                    comment: req.body.comment,
+                    published_date: new Date().toLocaleString("en-GB").slice(0, -6).replace(/,/g, "")
                 };
                 if(comment.writer == 1)
                     question.solved = true;
