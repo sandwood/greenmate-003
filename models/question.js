@@ -16,7 +16,7 @@ var commentSchema = new mongoose.Schema({
   comment: String,
   published_date: {
       type: String,
-      default: moment(dateNow).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm') 
+      default: moment(new Date()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm') 
     }
 });
 
