@@ -627,7 +627,7 @@ router.post("/addComment",function(req, res, next) {
             }
             
             var comment = {
-                commentId : "user_"+ req.headers['userseq'] +"-"+"DiaryCmt"+"-"+Date.now(),
+                commentId : "user_"+ req.headers['userseq'] +"-"+"DiaryCmt"+"-"+ new Date().toLocaleString("en-GB").slice(0, -6).replace(/,/g, ""),
                 username : user.username,
                 writer: req.body.writer,
                 comment: req.body.comment
