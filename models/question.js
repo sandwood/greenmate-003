@@ -9,16 +9,18 @@ autoIncrement.initialize(connection);
 mongoose.Promise = require('bluebird');
 
 
-var commentSchema = new mongoose.Schema({
+var commentSchema = new mongoose.Schema(
+    {
   commentId : String,
   writer : Number,
   username : String,
-  comment: String,
-  published_date: {
-      type: String,
-      default: moment(Date.now()).tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm') 
-    }
-});
+  comment: String
+    },
+    {
+    timestamps: { createdAt: "published_date" }
+  }
+);
+
 
 var questionSchema = new mongoose.Schema({
 
