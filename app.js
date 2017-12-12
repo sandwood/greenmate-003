@@ -31,6 +31,13 @@ var gcs = require('@google-cloud/storage')({
 //db updated every day Nthing!
 var request = require('request');
 
+var gulp =  require('gulp'),
+nodemon = require('gulp-nodemon');
+
+gulp.task('default', function() {
+  nodemon({ script: 'app.js' }).on('crash', nodemon.restart);
+});
+
 var options = {
   url: 'greenmate-163904.appspot.com/nthing',
   method: 'GET'
