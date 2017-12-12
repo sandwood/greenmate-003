@@ -209,7 +209,7 @@ router.post("/uploadImage", function(req, res){
       filename = new Date()
       .toLocaleString("en-GB")
       .slice(0, -2)
-      .replace(/[ :,/]/g, "")+'_'+part.filename+size;
+      .replace(/[ :,/]/g, "")+size+'_'+part.filename;
       var tempPicUrl = "https://s3.ap-northeast-2.amazonaws.com/" + bucketName + "/" + filename;
       picUrl.push(tempPicUrl);
       console.log(filename);
