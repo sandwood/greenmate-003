@@ -32,7 +32,7 @@ var gcs = require('@google-cloud/storage')({
 var request = require('request');
 
 var options = {
-  url: 'greenmate-163904.appspot.com/nthing',
+  url: 'www.nextfarmer.net/nthing',
   method: 'GET'
 }
 
