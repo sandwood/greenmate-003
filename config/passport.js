@@ -195,8 +195,8 @@ module.exports = function (passport) {
 		}));
 
 		passport.use(new NaverStrategy({
-				clientID: "iK4kBMEDIkoRb_kdJIA7",
-				clientSecret: "yqFVLyypmn",
+				clientID: "v545SqHUe6gt3ZZfSC3R",
+				clientSecret: "rxqbqZF_IR",
 				callbackURL: "http://www.nextfarmer.net/auth/naver/callback",
 				svcType: 0
 		}, function (accessToken, refreshToken, profile, done) {
